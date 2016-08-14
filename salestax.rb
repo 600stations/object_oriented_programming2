@@ -1,6 +1,6 @@
 class Item
   attr_reader :name
-  attr_accessor :quant, :price, :sales_tax, :import_tax, :total_tax, :total_item_cost
+  attr_accessor :quant, :price, :sales_tax, :import_tax, :total_item_cost
 
   def initialize (quant, name, price, sales_tax, import_tax)
     @quant = quant
@@ -8,7 +8,7 @@ class Item
     @price = price
     @sales_tax = sales_tax
     @import_tax = import_tax
-    @total_tax = total_tax
+    #@total_tax = total_tax
     @total_item_cost = 0
 
   end
@@ -19,13 +19,13 @@ class Item
       import_tax_rate = 0.05
 
       if @sales_tax == true && @import_tax == true
-        @total_tax = @price * (sales_tax_rate + import_tax_rate)
+         @price * (sales_tax_rate + import_tax_rate)
       elsif @sales_tax == true && @import_tax == false
-        @total_tax = @price * sales_tax_rate
+        @price * sales_tax_rate
       elsif @sales_tax == false && @import_tax == true
-        @total_tax = @price * import_tax_rate
+        @price * import_tax_rate
       else @sales_tax == false && @import_tax == false
-        @total_tax = 0
+        0
       end
     #  @@sales_tax_total+=@total_tax
   end
