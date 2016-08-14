@@ -1,6 +1,6 @@
 class Item
-  attr_reader :name
-  attr_accessor :quant, :price, :sales_tax, :import_tax, :total_item_cost
+  attr_reader :name, :price, :sales_tax, :import_tax
+  attr_accessor :quant
 
   def initialize (quant, name, price, sales_tax, import_tax)
     @quant = quant
@@ -8,14 +8,11 @@ class Item
     @price = price
     @sales_tax = sales_tax
     @import_tax = import_tax
-    #@total_tax = total_tax
-    @total_item_cost = 0
-
   end
 
   def tax
-      #@@sales_tax_total = 0
-      sales_tax_rate = 0.10
+
+      sales_tax_rate= 0.10
       import_tax_rate = 0.05
 
       if @sales_tax == true && @import_tax == true
@@ -27,18 +24,17 @@ class Item
       else @sales_tax == false && @import_tax == false
         0
       end
-    #  @@sales_tax_total+=@total_tax
   end
 
-  def total_item_cost
-    @total_item_cost = @price + tax
+  def total_item_cost #this method stores total cost per item incl. taxes
+    @price + tax
   end
 
-end # ends Item class
+end
+# ends Item class
 
 class Receipt < Item
-  attr_accessor :basket
-  attr_accessor :total_tax, :total
+  attr_accessor :basket, :total_tax
 
   def initialize
     @basket = []
@@ -70,7 +66,7 @@ end# end of Receipt class
 s1 = Item.new(1, "book", 12.49, false, false )
 s2 = Item.new(1, "music CD", 14.99, true, false)
 s3 = Item.new(1, "chocolate bar", 0.85, false, false)
-puts "#{@basket}"
+
 # produce receipts for Shopping Cart One
 r1 = Receipt.new
 r1.add_to_cart(s1)
