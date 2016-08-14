@@ -58,21 +58,45 @@ class Receipt < Item
     @basket.each do |x|
     puts "#{x.quant} #{x.name}: #{x.total_item_cost.round(2)}"
   end
+  puts
+  puts "Shopping Cart Totals:"
   puts "Sales Tax: #{@@sales_tax_total.round(2)}"
   puts "Total: #{@@basket_total_sale.round(2)}"
-
-
-end # end of Receipt class
+  puts
+  end
+end# end of Receipt class
 
 # 001 Shopping Cart
 s1 = Item.new(1, "book", 12.49, false, false )
 s2 = Item.new(1, "music CD", 14.99, true, false)
 s3 = Item.new(1, "chocolate bar", 0.85, false, false)
 puts "#{@basket}"
-# produce receipts
+# produce receipts for Shopping Cart One
 r1 = Receipt.new
 r1.add_to_cart(s1)
 r1.add_to_cart(s2)
 r1.add_to_cart(s3)
 r1.start
-end
+
+# 002 Second Shopping Cart
+s4 = Item.new(1, "imported box of chocolates", 10.00, false, true)
+s5 = Item.new(1, "imported bottle of perfume", 47.50, true, true)
+#
+# 002 receipts for Second Shopping Cart
+r2 = Receipt.new
+r2.add_to_cart(s4)
+r2.add_to_cart(s5)
+r2.start
+#
+# 003 Third Shopping Cart
+s6 = Item.new(1, "imported bottle of perfume", 27.99, true, true)
+s7 = Item.new(1, "bottle of perfume", 18.99, true, false)
+s8 = Item.new(1, "packet of headache pills", 9.75, false, false)
+s9 = Item.new(1, "box of imported chocolates", 11.25, false, true)
+# 003 receipts for Third Shopping Cart
+r3 = Receipt.new
+r3.add_to_cart(s6)
+r3.add_to_cart(s7)
+r3.add_to_cart(s8)
+r3.add_to_cart(s9)
+r3.start
