@@ -52,12 +52,12 @@ class Receipt < Item
 
   def start
     @basket.each do |x|
-    puts "#{x.quant} #{x.name}: #{x.total_item_cost.round(2)}"
+    puts "#{x.quant} #{x.name}: #{'%.02f' % x.total_item_cost}"
   end
   puts
   puts "Shopping Cart Totals:"
-  puts "Sales Tax: #{@@sales_tax_total.round(2)}"
-  puts "Total: #{@@basket_total_sale.round(2)}"
+  puts "Sales Tax: #{'%.02f' % @@sales_tax_total}"
+  puts "Total: #{'%.02f' % @@basket_total_sale}"
   puts
   end
 end# end of Receipt class
