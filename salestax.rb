@@ -34,7 +34,7 @@ end
 # ends Item class
 
 class Receipt < Item
-  attr_accessor :basket, :total_tax
+  attr_accessor :basket
 
   def initialize
     @basket = []
@@ -43,16 +43,16 @@ class Receipt < Item
 
   end
 
-  def add_to_cart(item)
-    @basket << item
-    @@sales_tax_total += item.tax
-    @@basket_total_sale += item.total_item_cost
+  def add_to_cart(purchase)
+    @basket << purchase
+    @@sales_tax_total += purchase.tax
+    @@basket_total_sale += purchase.total_item_cost
 
   end
 
   def start
-    @basket.each do |x|
-    puts "#{x.quant} #{x.name}: #{'%.02f' % x.total_item_cost}"
+    @basket.each do |element|
+    puts "#{element.quant} #{element.name}: #{'%.02f' % element.total_item_cost}"
   end
   puts
   puts "Shopping Cart Totals:"
