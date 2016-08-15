@@ -33,7 +33,7 @@ class Item
 end
 # ends Item class
 
-class Receipt < Item
+class Receipt
   attr_accessor :basket
 
   def initialize
